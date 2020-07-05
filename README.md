@@ -3,6 +3,9 @@ The Dungeon Crawl Classics Lanhkmar Warrior Character Generator is designed prim
 
 Several of the jQuery/JavaScript functions are stored in external files, as a means of creating greater design efficiency, with the goal of designing a program with high cohesion and low coupling. In this way, this program replicates Object-Oriented design. JSON is used to store multi-column variables, with jQuery functions used to retrieve these variables.
 
-Update 1.01 (2020-07-03):  A 'work-in=progress' working iteration of the DCC Lankhmar Warrior Character Generator has been added.
+
+Update 1.02 (2020-07-04):  A new file, diceRoll.php, added.  Code updated.
+
+Update 1.01 (2020-07-03):  A 'work-in progress' working iteration of the DCC Lankhmar Warrior Character Generator has been added.
 
 Initial Commit (2020-07-03):  The responsitory has been created.  File containing code will be added shortly.
