@@ -3,6 +3,7 @@ The Dungeon Crawl Classics Lanhkmar Warrior Character Generator is designed prim
 
 Several of the jQuery/JavaScript functions are stored in external files, as a means of creating greater design efficiency, with the goal of designing a program with high cohesion and low coupling. In this way, this program replicates Object-Oriented design. JSON is used to store multi-column variables, with jQuery functions used to retrieve these variables.
 
+Update 1.03 (2020-07-05):  dieRoll.js file removed.  New file, bensionsDooms.php added.  Existing files updated.
 
 Update 1.02 (2020-07-04):  A new file, diceRoll.php, added.  Code updated.
 
