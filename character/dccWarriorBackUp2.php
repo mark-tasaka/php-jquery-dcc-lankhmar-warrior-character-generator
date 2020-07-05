@@ -16,7 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="css/warrior.css">
     
     
-  <!--  <script type="text/javascript" src="./js/dieRoll.js"></script>-->
+    <script type="text/javascript" src="./js/dieRoll.js"></script>
     <script type="text/javascript" src="./js/modifiers.js"></script>
     <script type="text/javascript" src="./js/hitPoinst.js"></script>
     <script type="text/javascript" src="./js/abilityScoreAddition.js"></script>
@@ -86,34 +86,14 @@
         {
             $abilityScoreGen = $_POST["theAbilityScore"];
         
-        }
-
-        $abilityScoreArray = diceRollArray($abilityScoreGen);
-        
-        /* 0 - Strength
-         1 - Agility
-         2 - Stamina
-         3 - Personality
-         4 - Intelligence
-         5 - Luck
-        */
-
-        $strength = $abilityScoreArray[0];
-        $agility = $abilityScoreArray[1];
-        $stamina = $abilityScoreArray[2];
-        $personality = $abilityScoreArray[3];
-        $intelligence = $abilityScoreArray[4];
-        $luck = $abilityScoreArray[5];
-        
+        } 
     
-        /*
     $dieType = generationMethod ($abilityScoreGen)[0];
     $numberDie = generationMethod ($abilityScoreGen)[1];
     $dieRemoved = generationMethod ($abilityScoreGen)[2];
     $valueAdded = generationMethod ($abilityScoreGen)[3];
-    */
     
-   // $generationMessage = generationMesssage ($abilityScoreGen);
+    $generationMessage = generationMesssage ($abilityScoreGen);
     
     
         if(isset($_POST["theArmour"]))
@@ -449,12 +429,12 @@
            ?>
        </span>
 
-<!--
+
        <span id="abilityScoreGeneration">
             <?php
-           //echo $generationMessage;
+           echo $generationMessage;
            ?>
-       </span>-->
+       </span>
        
 
        
@@ -471,12 +451,12 @@
 	*/
 	function Character() {
         
-        let strength = '<?php echo $strength ?>';
-        let	intelligence = '<?php echo $intelligence ?>';
-        let	personality = '<?php echo $personality ?>';
-        let agility = '<?php echo $agility ?>';
-        let stamina = '<?php echo $stamina ?>';
-        let	luck = '<?php echo $luck ?>';
+        let strength = rollDice(<?php echo $dieType ?> ,<?php echo $numberDie ?>, <?php echo $dieRemoved ?>, <?php echo $valueAdded ?>);
+        let	intelligence = rollDice(<?php echo $dieType ?> ,<?php echo $numberDie ?>, <?php echo $dieRemoved ?>, <?php echo $valueAdded ?>);
+        let	personality = rollDice(<?php echo $dieType ?> ,<?php echo $numberDie ?>, <?php echo $dieRemoved ?>, <?php echo $valueAdded ?>);
+        let agility = rollDice(<?php echo $dieType ?> ,<?php echo $numberDie ?>, <?php echo $dieRemoved ?>, <?php echo $valueAdded ?>);
+        let stamina = rollDice(<?php echo $dieType ?> ,<?php echo $numberDie ?>, <?php echo $dieRemoved ?>, <?php echo $valueAdded ?>);
+        let	luck = rollDice(<?php echo $dieType ?> ,<?php echo $numberDie ?>, <?php echo $dieRemoved ?>, <?php echo $valueAdded ?>);
         
         let strengthMod = abilityScoreModifier(strength);
         let intelligenceMod = abilityScoreModifier(intelligence);

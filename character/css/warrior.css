@@ -465,5 +465,11 @@ body{
 }
 
 
+#placeOfOrigin{
+    position:absolute;
+    top: 102px;
+    left: 560px;
+	font-size: 0.6em;
 
+}
 
