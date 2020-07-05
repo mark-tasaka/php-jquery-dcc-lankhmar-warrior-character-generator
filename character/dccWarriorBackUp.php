@@ -43,15 +43,6 @@
     include 'php/abilityScoreGen.php';
     include 'php/randomName.php';
     
-    if(isset($_POST["theStength"]))
-    {
-        $strenthScore = $_POST["theStength"];
-
-    }
-    
-
-    //echo $strenthScore;
-
 
         if(isset($_POST["theCharacterName"]))
         {
