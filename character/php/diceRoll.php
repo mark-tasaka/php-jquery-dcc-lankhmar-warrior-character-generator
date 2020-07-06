@@ -27,6 +27,42 @@ function diceRoll4D6()
 }
 
 
+function diceRoll2D6Plus6()
+{
+    $ability = rand(1,6) + rand(1,6) + 6;
+
+    return $ability;
+}
+
+
+function diceRollD5D6D7()
+{
+    $ability = rand(1,5) + rand(1,6) + rand(1,6);
+
+    return $ability;
+}
+
+
+function diceRoll5D6()
+{
+    $abilityArray = array();
+
+    for($i = 0; $i < 5; ++$i)
+    {
+        $die = rand(1, 6);
+
+        array_push($abilityArray, $die);
+    }
+
+    sort($abilityArray);
+
+    $abilityScore = $abilityArray[2] + $abilityArray[3] + $abilityArray[4];
+    
+    return $abilityScore;
+}
+
+
+
 function diceRollArray($choice)
 {
     $abilityScores = array();
@@ -46,6 +82,36 @@ function diceRollArray($choice)
         for($i = 0; $i < 6; ++$i)
         {
             $stat = diceRoll4D6();
+
+            array_push($abilityScores, $stat);
+        }
+    }
+    
+    if($choice == '3')
+    {
+        for($i = 0; $i < 6; ++$i)
+        {
+            $stat = diceRoll2D6Plus6();
+
+            array_push($abilityScores, $stat);
+        }
+    }
+    
+    if($choice == '4')
+    {
+        for($i = 0; $i < 6; ++$i)
+        {
+            $stat = diceRollD5D6D7();
+
+            array_push($abilityScores, $stat);
+        }
+    }
+    
+    if($choice == '5')
+    {
+        for($i = 0; $i < 6; ++$i)
+        {
+            $stat = diceRoll5D6();
 
             array_push($abilityScores, $stat);
         }

@@ -6,8 +6,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
 	<meta charset="UTF-8">
-	<meta name="description" content="Dungeon Crawl Classics Warrior Character Generator. Goblinoid Games.">
-	<meta name="keywords" content="Dungeon Crawl Classics, Goblinoid Games,HTML5,CSS,JavaScript">
+	<meta name="description" content="Dungeon Crawl Classics Warrior Character Generator. Goodman Games.">
+	<meta name="keywords" content="Dungeon Crawl Classics, Goodman Games,HTML5,CSS,JavaScript">
 	<meta name="author" content="Mark Tasaka 2020">
     
     <link rel="icon" href="../../../../images/favicon/icon.png" type="image/png" sizes="16x16"> 
@@ -16,12 +16,9 @@
 	<link rel="stylesheet" type="text/css" href="css/warrior.css">
     
     
-  <!--  <script type="text/javascript" src="./js/dieRoll.js"></script>-->
     <script type="text/javascript" src="./js/modifiers.js"></script>
     <script type="text/javascript" src="./js/hitPoinst.js"></script>
-    <script type="text/javascript" src="./js/abilityScoreAddition.js"></script>
     <script type="text/javascript" src="./js/attackBonus.js"></script>
-    <script type="text/javascript" src="./js/classAbilities.js"></script>
     <script type="text/javascript" src="./js/luckySign.js"></script>
     <script type="text/javascript" src="./js/adjustments.js"></script>
     <script type="text/javascript" src="./js/languages.js"></script>
@@ -45,6 +42,8 @@
     include 'php/diceRoll.php';
     include 'php/placeOrigin.php';
     include 'php/bensionsDooms.php';
+    include 'php/abilityScoreMod.php';
+    include 'php/message.php';
     
 
 
@@ -89,6 +88,8 @@
         }
 
         $abilityScoreArray = diceRollArray($abilityScoreGen);
+
+        $dieRollMessage = dieRollMethodText($abilityScoreGen);
         
         /* 0 - Strength
          1 - Agility
@@ -97,25 +98,80 @@
          4 - Intelligence
          5 - Luck
         */
-
-        $strength = $abilityScoreArray[0];
-        $agility = $abilityScoreArray[1];
-        $stamina = $abilityScoreArray[2];
-        $personality = $abilityScoreArray[3];
-        $intelligence = $abilityScoreArray[4];
-        $luck = $abilityScoreArray[5];
         
-    
-        /*
-    $dieType = generationMethod ($abilityScoreGen)[0];
-    $numberDie = generationMethod ($abilityScoreGen)[1];
-    $dieRemoved = generationMethod ($abilityScoreGen)[2];
-    $valueAdded = generationMethod ($abilityScoreGen)[3];
-    */
-    
-   // $generationMessage = generationMesssage ($abilityScoreGen);
-    
-    
+        if(isset($_POST["theOptimization"]))
+        {
+            $optimizeChoice = $_POST["theOptimization"];
+        
+        }
+
+        $optimizeText = abilityScoreAssignmentText($optimizeChoice);
+
+        if($optimizeChoice == "2")
+        {
+            rsort($abilityScoreArray);
+
+            $strength = $abilityScoreArray[0];
+            $agility = $abilityScoreArray[1];
+            $stamina = $abilityScoreArray[2];
+            $personality = $abilityScoreArray[4];
+            $intelligence = $abilityScoreArray[5];
+            $luck = $abilityScoreArray[3];
+        }
+        else if($optimizeChoice == "3")
+        {
+            rsort($abilityScoreArray);
+
+            $strength = $abilityScoreArray[0];
+            $agility = $abilityScoreArray[2];
+            $stamina = $abilityScoreArray[1];
+            $personality = $abilityScoreArray[4];
+            $intelligence = $abilityScoreArray[5];
+            $luck = $abilityScoreArray[3];
+        }
+        else if($optimizeChoice == "4")
+        {
+            rsort($abilityScoreArray);
+
+            $strength = $abilityScoreArray[2];
+            $agility = $abilityScoreArray[0];
+            $stamina = $abilityScoreArray[1];
+            $personality = $abilityScoreArray[4];
+            $intelligence = $abilityScoreArray[5];
+            $luck = $abilityScoreArray[3];
+        }
+        else if($optimizeChoice == "5")
+        {
+            rsort($abilityScoreArray);
+
+            $strength = $abilityScoreArray[1];
+            $agility = $abilityScoreArray[3];
+            $stamina = $abilityScoreArray[2];
+            $personality = $abilityScoreArray[5];
+            $intelligence = $abilityScoreArray[4];
+            $luck = $abilityScoreArray[0];
+        }
+        else
+        {
+            $strength = $abilityScoreArray[0];
+            $agility = $abilityScoreArray[1];
+            $stamina = $abilityScoreArray[2];
+            $personality = $abilityScoreArray[3];
+            $intelligence = $abilityScoreArray[4];
+            $luck = $abilityScoreArray[5];
+
+        }
+
+        $strengthMod = abilityScoreModifier($strength);
+        $agilityMod = abilityScoreModifier($agility);
+        $staminaMod = abilityScoreModifier($stamina);
+        $personalityMod = abilityScoreModifier($personality);
+        $intelligenceMod = abilityScoreModifier($intelligence);
+        $luckMod = abilityScoreModifier($luck);
+
+        $bension = getBension($placeOriginVal, $luckMod);
+        
+
         if(isset($_POST["theArmour"]))
         {
             $armour = $_POST["theArmour"];
@@ -294,6 +350,12 @@
                 echo $placeOfOrigin;
            ?>
         </span>
+
+        <span id="bension">
+            <?php
+                echo $bension;
+           ?>
+        </span>
         
 
 
@@ -449,12 +511,12 @@
            ?>
        </span>
 
-<!--
+
        <span id="abilityScoreGeneration">
             <?php
-           //echo $generationMessage;
+            echo $dieRollMessage . $optimizeText;
            ?>
-       </span>-->
+       </span>
        
 
        
@@ -471,19 +533,19 @@
 	*/
 	function Character() {
         
-        let strength = '<?php echo $strength ?>';
-        let	intelligence = '<?php echo $intelligence ?>';
-        let	personality = '<?php echo $personality ?>';
-        let agility = '<?php echo $agility ?>';
-        let stamina = '<?php echo $stamina ?>';
-        let	luck = '<?php echo $luck ?>';
+        let strength = <?php echo $strength ?>;
+        let	intelligence = <?php echo $intelligence ?>;
+        let	personality = <?php echo $personality ?>;
+        let agility = <?php echo $agility ?>;
+        let stamina = <?php echo $stamina ?>;
+        let	luck = <?php echo $luck ?>;
         
-        let strengthMod = abilityScoreModifier(strength);
-        let intelligenceMod = abilityScoreModifier(intelligence);
-        let personalityMod = abilityScoreModifier(personality);
-        let agilityMod = abilityScoreModifier(agility);
-        let staminaMod = abilityScoreModifier(stamina);
-        let luckMod = abilityScoreModifier(luck);
+        let strengthMod = <?php echo $strengthMod ?>;
+        let intelligenceMod = <?php echo $intelligenceMod ?>;
+        let personalityMod = <?php echo $personalityMod ?>;
+        let agilityMod = <?php echo $agilityMod ?>;
+        let staminaMod = <?php echo $staminaMod ?>;
+        let luckMod = <?php echo $luckMod ?>;
         let level = '<?php echo $level ?>';
         let gender = '<?php echo $gender ?>';
         let armour = '<?php echo $armourName ?>';

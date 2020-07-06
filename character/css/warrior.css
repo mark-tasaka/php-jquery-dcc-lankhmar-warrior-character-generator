@@ -243,7 +243,7 @@ body{
     top: 255px;
     left: 500px;
     font-size: 0.75em;
-    width: 175px;
+    width: 170px;
 }
 
 #languages{
@@ -415,9 +415,10 @@ body{
 
 #abilityScoreGeneration{
     position:absolute;
-    top: 1155px;
+    top: 1130px;
     left: 680px;
-	font-size: 0.5em;
+    width: 220px;
+	font-size: 0.45em;
 }
 
 
@@ -471,5 +472,12 @@ body{
     left: 560px;
 	font-size: 0.6em;
 
+}
+
+#bension{
+    position:absolute;
+    top: 606px;
+    left: 680px;
+	font-size: 0.7em;
 }
 

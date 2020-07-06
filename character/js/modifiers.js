@@ -1,6 +1,7 @@
 /*Dungeon Crawl Classics Character Generator
 designed by Mark Tasaka 2020*/
 
+/*
 function abilityScoreModifier(abilityScore)
 {
     let modifier = 0;
@@ -36,6 +37,7 @@ function abilityScoreModifier(abilityScore)
     
     return modifier;
 }
+*/
 
 
 function addModifierSign (modifer)
