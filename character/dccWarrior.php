@@ -36,7 +36,6 @@
     include 'php/weapons.php';
     include 'php/gear.php';
     include 'php/classDetails.php';
-    include 'php/clothing.php';
     include 'php/abilityScoreGen.php';
     include 'php/randomName.php';
     include 'php/diceRoll.php';
@@ -44,6 +43,7 @@
     include 'php/bensionsDooms.php';
     include 'php/abilityScoreMod.php';
     include 'php/message.php';
+    include 'php/baseLanguage.php';
     
 
 
@@ -64,6 +64,10 @@
         }
 
         $placeOfOrigin = placeOfOrigin($placeOriginVal);
+
+        $modifiedOriginChoice = getModifiedChoice($placeOriginVal);
+
+        $baseLanuage = getBaseLanguage ($modifiedOriginChoice);
 
         if(isset($_POST['theCheckBoxRandomName']) && $_POST['theCheckBoxRandomName'] == 1) 
         {
@@ -91,14 +95,7 @@
 
         $dieRollMessage = dieRollMethodText($abilityScoreGen);
         
-        /* 0 - Strength
-         1 - Agility
-         2 - Stamina
-         3 - Personality
-         4 - Intelligence
-         5 - Luck
-        */
-        
+ 
         if(isset($_POST["theOptimization"]))
         {
             $optimizeChoice = $_POST["theOptimization"];
@@ -570,7 +567,7 @@
 			"luckySign": birthAugur.luckySign,
             "luckyRoll": birthAugur.luckyRoll,
             "move": <?php echo $speed ?> + addLuckToSpeed (birthAugur, luckMod),
-            "addLanguages": "Common" + bonusLanguages,
+            "addLanguages": '<?php echo $baseLanuage  ?>' + bonusLanguages,
             "armourClass": <?php echo $totalAcDefense ?> + baseAC,
             "hp": getHitPoints (level, staminaMod) + hitPointAdjustPerLevel(birthAugur,  luckMod),
 			"melee": strengthMod + meleeAdjust(birthAugur, luckMod),

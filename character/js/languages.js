@@ -21,7 +21,7 @@ function addBonusLanguages() {
 		{"language": "Troglodyte"},
 		{"language": "Giant"}
 			];
-    return bonusLanguages[Math.floor(Math.random() * 17)]; 
+    return bonusLanguages[Math.floor(Math.random() * bonusLanguages.length)]; 
 }
 		
 	  
@@ -44,6 +44,8 @@ function getBonusLanguages (intelligenceModifier, luckySign, luckModifier) {
 	if(bonusLanguages <=0) {
 		return "";
 	}
+
+	
 	var result = ", " + addBonusLanguages().language, newLanguage = "";
 	
 	// loop
