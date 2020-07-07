@@ -3,6 +3,7 @@ The Dungeon Crawl Classics Lanhkmar Warrior Character Generator is designed prim
 
 Several of the jQuery/JavaScript functions are stored in external files, as a means of creating greater design efficiency, with the goal of designing a program with high cohesion and low coupling. In this way, this program replicates Object-Oriented design. JSON is used to store multi-column variables, with jQuery functions used to retrieve these variables.
 
+Update 1.07 (2020-07-07): Cleaned up the repository by deleting the backup files.
 
 Update 1.06 (2020-07-06):  A complete version of warrior character generator uploaded.  The next update will removed backup files and add a launch page.
 
