@@ -404,6 +404,13 @@ body{
     width: 260px;
 }
 
+#coinCollection{
+    position:absolute;
+    top: 1125px;
+    left: 90px;
+    font-size: 0.6em;
+    width: 260px;
+}
 
 
 #move{
@@ -477,7 +484,14 @@ body{
 #bension{
     position:absolute;
     top: 606px;
-    left: 680px;
-	font-size: 0.7em;
+    left: 675px;
+	font-size: 0.65em;
+}
+
+#doom{
+    position:absolute;
+    top: 658px;
+    left: 675px;
+	font-size: 0.65em;
 }
 

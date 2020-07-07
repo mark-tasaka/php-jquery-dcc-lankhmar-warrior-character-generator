@@ -4,7 +4,7 @@ designed by Mark Tasaka 2020*/
 
 function addModifierSign (modifer)
 {
-    let value = "";
+    var value = "";
     
     if(modifer >=0)
         {

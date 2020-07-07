@@ -44,6 +44,7 @@
     include 'php/abilityScoreMod.php';
     include 'php/message.php';
     include 'php/baseLanguage.php';
+    include 'php/wealth.php';
     
 
 
@@ -168,6 +169,14 @@
 
         $bension = getBension($placeOriginVal, $luckMod);
         
+        $doom = getDoom($placeOriginVal, $luckMod);
+        
+        if(isset($_POST["theWealth"]))
+        {
+            $wealth = $_POST["theWealth"];
+        }
+
+        $coinCollection = getWealth ($wealth);
 
         if(isset($_POST["theArmour"]))
         {
@@ -353,7 +362,12 @@
                 echo $bension;
            ?>
         </span>
-        
+
+        <span id="doom">
+            <?php
+                echo $doom;
+        ?>
+        </span>
 
 
               
@@ -508,6 +522,12 @@
            ?>
        </span>
 
+        <span id="coinCollection">
+            <?php
+                echo $coinCollection;
+            ?>
+        </span>
+
 
        <span id="abilityScoreGeneration">
             <?php
@@ -546,8 +566,9 @@
         let level = '<?php echo $level ?>';
         let gender = '<?php echo $gender ?>';
         let armour = '<?php echo $armourName ?>';
-	    let birthAugur = getLuckySign();
-        let bonusLanguages = getBonusLanguages(intelligenceMod, birthAugur, luckMod);
+        let birthAugur = getLuckySign();
+        let modLanguages = <?php echo $modifiedOriginChoice ?>;
+        let bonusLanguages = getBonusLanguages(intelligenceMod, birthAugur, luckMod, modLanguages);
 	    let baseAC = getBaseArmourClass(agilityMod) + adjustAC(birthAugur, luckMod);
 
 		let warriorCharacter = {

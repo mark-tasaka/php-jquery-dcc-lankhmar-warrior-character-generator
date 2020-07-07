@@ -1,7 +1,7 @@
 
 function attackBonus (level)
 {
-    let toHit = 1;
+    var toHit = 1;
     
     if(level >= 2 && level <= 3)
     {

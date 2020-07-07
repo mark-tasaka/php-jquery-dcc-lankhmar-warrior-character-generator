@@ -245,4 +245,249 @@ function getBension($choice, $luckMod)
 }
 
 
+function lankhmarDooms ($luckMod)
+{
+    $roll = ( rand(0, 19) ) + $luckMod;
+
+    $doom = array(
+        'Distinctive Appearance',
+        'Poverty-Stricken',
+        'Owes a Minor Favour',
+        'Illiterate',
+        'Dependent ',
+        'Minor Foe',
+        'In Debt',
+        'Blackmailed ',
+        'Bad Reputation in Certain Circles',
+        'Owes a Major Favour',
+        'Major Foe',
+        'Outcast',
+        'Inept',
+        'Magically Corrupted',
+        'Hindered',
+        'Enmity of the Slayers’ Brotherhood',
+        'Cursed',
+        'Geased ',
+        'Hatred of a Supernatural Entity',
+        'Wanted by the Thieves’ Guild'
+    );
+
+    if($roll < 0)
+    {
+        $roll = 0;
+    }
+
+    if($roll > 19)
+    {
+        $roll = 19;
+    }
+
+    return $doom[$roll];
+
+}
+
+
+function eightCitiesDooms ($luckMod)
+{
+    $roll = ( rand(0, 19) ) + $luckMod;
+
+    $doom = array(
+        'Illiterate',
+        'Distinctive Appearance',
+        'Poverty-Stricken',
+        'Owes a Minor Favour',
+        'Dependent',
+        'In Debt',
+        'Blackmailed',
+        'Minor Foe',
+        'Bad Reputation in Certain Circles',
+        'Inept',
+        'Outcast',
+        'Owes a Major Favour',
+        'Major Foe',
+        'Hindered',
+        'Magically Corrupted',
+        'Geased',
+        'Tainted Bloodline',
+        'Cursed',
+        'Hatred of a Supernatural Entity',
+        'Escaped Gladiator'
+    );
+
+    if($roll < 0)
+    {
+        $roll = 0;
+    }
+
+    if($roll > 19)
+    {
+        $roll = 19;
+    }
+
+    return $doom[$roll];
+
+}
+
+
+function coldWasteDooms ($luckMod)
+{
+    $roll = ( rand(0, 19) ) + $luckMod;
+
+    $doom = array(
+        'Distinctive Appearance',
+        'Poverty-Stricken',
+        'Illiterate',
+        'Prone to Seasickness',
+        'Dependent ',
+        'Minor Foe',
+        'Owes a Minor Favour',
+        'Blackmailed ',
+        'Bad Reputation in Certain Circles',
+        'Superstitious',
+        'Outcast',
+        'Owes a Major Favour',
+        'Inept',
+        'Major Foe',
+        'Hindered',
+        'Uncivilized',
+        'Magically Corrupted',
+        'Geased ',
+        'Cursed',
+        'Hatred of a Supernatural Entity'
+    );
+
+    if($roll < 0)
+    {
+        $roll = 0;
+    }
+
+    if($roll > 19)
+    {
+        $roll = 19;
+    }
+
+    return $doom[$roll];
+
+}
+
+
+
+function easternLandsDooms ($luckMod)
+{
+    $roll = ( rand(0, 19) ) + $luckMod;
+
+    $doom = array(
+        'Distinctive Appearance',
+        'Poverty-Stricken',
+        'Illiterate',
+        'Dependent ',
+        'Owes a Minor Favour',
+        'Minor Foe',
+        'Blackmailed ',
+        'Bad Reputation in Certain Circles',
+        'In Debt',
+        'Outcast',
+        'Inept',
+        'Owes a Major Favour',
+        'Major Foe',
+        'Magically Corrupted',
+        'Hindered',
+        'Eunuch',
+        'Cursed',
+        'Hatred of a Supernatural Entity',
+        'Geased ',
+        'Blood Price on PC’s Head'
+    );
+
+    if($roll < 0)
+    {
+        $roll = 0;
+    }
+
+    if($roll > 19)
+    {
+        $roll = 19;
+    }
+
+    return $doom[$roll];
+
+}
+
+
+
+function mingolSteppesDooms ($luckMod)
+{
+    $roll = ( rand(0, 19) ) + $luckMod;
+
+    $doom = array(
+        'Distinctive Appearance',
+        'Illiterate',
+        'Poor Rider',
+        'Poverty-Stricken',
+        'Superstitious',
+        'Bad Reputation in Certain Circles',
+        'Owes a Minor Favour',
+        'In Debt',
+        'Minor Foe',
+        'Inept',
+        'Owes a Major Favour',
+        'Outcast',
+        'Major Foe',
+        'Hindered',
+        'Magically Corrupted',
+        'Uncivilized',
+        'Cursed',
+        'Hatred of a Supernatural Entity',
+        'Tainted Bloodline',
+        'Inglorious Doom'
+    );
+
+    if($roll < 0)
+    {
+        $roll = 0;
+    }
+
+    if($roll > 19)
+    {
+        $roll = 19;
+    }
+
+    return $doom[$roll];
+
+}
+
+
+function getDoom($choice, $luckMod)
+{
+    $doom = '';
+
+    if($choice == '0')
+    {
+        $doom = lankhmarDooms ($luckMod);
+    }
+
+    if($choice == '1')
+    {
+        $doom = eightCitiesDooms ($luckMod);
+    }
+
+    if($choice == '2')
+    {
+        $doom = coldWasteDooms ($luckMod);
+    }
+
+    if($choice == '3')
+    {
+        $doom = easternLandsDooms ($luckMod);
+    }
+
+    if($choice == '4')
+    {
+        $doom = mingolSteppesDooms ($luckMod);
+    }
+
+    return $doom;
+}
+
+
 ?>
