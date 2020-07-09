@@ -1,0 +1,87 @@
+
+.descript_text {
+    margin-left: 100px;
+    margin-right: 100px;
+    font-style: italic;
+}
+
+
+.content1b {
+    width: 500px;
+    margin: 0px auto;
+  text-align: center;
+    
+}
+
+.formIputDescription1b{
+	color: #ffffff;
+    margin-left: 10px;
+}
+
+
+#generate_level0_characters1aa {
+	background-image: url(../images/buttons/submit_character1.png);
+    width: 160px;
+    height: 60px;
+    display: inline-block;
+	background-repeat: no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    border: none;
+
+}
+
+#generate_level0_characters1aa:hover {
+	background-image: url(../images/buttons/submit_character2.png);
+
+}
+
+
+#reset__level0_characters1aa{
+	background-image: url(../images/buttons/reset_character1.png);
+    width: 160px;
+    height: 60px;
+    display: inline-block;
+	background-repeat: no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    border: none;
+
+}
+
+#reset__level0_characters1aa:hover{
+	background-image: url(../images/buttons/reset_character2.png);
+
+}
+
+
+.formIputDescriptionLankhmar{
+	color: #ffffff;
+    font-weight: bold;
+    margin-left: 30px;
+}
+
+
+table.abilityScoreTable{
+  table-layout: auto;
+  /*width: 420px;  */
+}
+
+.abilityScoreCell{
+    width:120px;
+    text-align: right;
+}
+
+.abilityScoreStat{
+    width:40px;
+    text-align: left;
+
+}
+
+.abilityScore{
+    color: #ffffff;
+    font-size: 0.85em;
+    font-weight: normal;
+}
